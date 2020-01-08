@@ -2,8 +2,22 @@
 const ab = { a: "1", b: "2" };
 const ba = { b: "2", a: "1" };
 const abc = { a: "1", b: "2", c: "3" };
+const cd = { c: "1", d: ["2", 3] };
+const dc = { d: ["2", 3], c: "1" };
+const cd2 = { c: "1", d: ["2", 3, 4] };
 
 //Imported Function
+const eqArrays = function(arrA, arrB) {
+  if (arrA.length !== arrB.length) return false;
+
+  let i;
+  for (i = 0; i < arrA.length; i++) {
+    if (arrA[i] !== arrB[i]) return false;
+  }
+
+  return true;
+};
+
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
     console.log(`😀Assertion Passed: ${actual} === ${expected}`);
@@ -19,13 +33,19 @@ const eqObjects = function(object1, object2) {
 
   if (keys1.length !== keys2.length) return false;
 
-  let i;
-  for (i = 0; i < keys1.length; i++) {
-    if (object1[keys1] !== object2[keys1]) return false;
+  for (const key of keys1) {
+    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+      return eqArrays(object1[key], object2[key]);
+    } else if (object1[key] !== object2[key]) {
+      return false;
+    }
   }
+
   return true;
 };
 
 //Code Test
-console.log(eqObjects(ab, ba)); // => true
-console.log(eqObjects(ab, abc)); // => false
+assertEqual(eqObjects(ab, ba), true);
+assertEqual(eqObjects(ab, abc), false);
+assertEqual(eqObjects(cd, dc), true);
+assertEqual(eqObjects(cd, cd2), false);
