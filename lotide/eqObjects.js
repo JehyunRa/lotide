@@ -36,6 +36,8 @@ const eqObjects = function(object1, object2) {
   for (const key of keys1) {
     if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
       return eqArrays(object1[key], object2[key]);
+    } else if (typeof object1[key] === 'object' && typeof object2[key] === 'object' && object1[key] !== null && object2[key] !== null) {
+      return eqObjects(object1[key], object2[key]);
     } else if (object1[key] !== object2[key]) {
       return false;
     }
@@ -49,3 +51,8 @@ assertEqual(eqObjects(ab, ba), true);
 assertEqual(eqObjects(ab, abc), false);
 assertEqual(eqObjects(cd, dc), true);
 assertEqual(eqObjects(cd, cd2), false);
+console.log('---');
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { y: 0, z: 1 }, b: 2 }), true);
