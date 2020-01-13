@@ -1,9 +1,19 @@
 //Imported Function
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const head = require('../head');
 
 //Test Code
-assertEqual(head([5,6,7]), 5);
-assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
-assertEqual(head([1]), 1);
-assertEqual(head([]), "undefined");
+describe("#head", () => {
+  it("returns 1 for [5, 6, 7]", () => {
+    assert.strictEqual(head([5, 6, 7]), 5);
+  });
+  it("returns 'hello' for ['hello', 'lighthouse', 'labs']", () => {
+    assert.strictEqual(head(['hello', 'lighthouse', 'labs']), 'hello');
+  });
+  it("returns 1 for [1]", () => {
+    assert.strictEqual(head([1]), 1);
+  });
+  it("returns 'undefined' for []", () => {
+    assert.strictEqual(head([]), 'undefined');
+  });
+});
