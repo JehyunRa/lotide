@@ -1,6 +1,3 @@
-//Imported Function
-const assertArraysEqual = require('./assertArraysEqual');
-
 //Function
 const middle = function(arr) {
   let rtArr = [];
