@@ -1,6 +1,5 @@
 //Imported Function
 const assertEqual = require('../assertEqual');
-const head = require('../head');
 
 //Test Code - assertEqual
 assertEqual("Lighthouse Labs", "Bootcamp");

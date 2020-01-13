@@ -1,6 +1,3 @@
-//Imported Function
-const assertEqual = require('./assertEqual');
-
 //Function
 const head = function(inputArray) {
   if (inputArray.length > 0) {
