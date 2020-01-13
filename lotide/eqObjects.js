@@ -15,7 +15,7 @@ const eqArrays = function(arrA, arrB) {
     if (Array.isArray(arrA[i]) && Array.isArray(arrB[i])) {
       if (!eqArrays(arrA[i], arrB[i])) {
         return false;
-      };
+      }
     } else if (arrA[i] !== arrB[i]) {
       return false;
     }
