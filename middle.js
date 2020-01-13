@@ -1,27 +1,7 @@
-// Function Implementation
-// Test/Assertion Functions
-const eqArrays = function(arrA, arrB) {
-  if (arrA.length !== arrB.length) return false;
+//Imported Function
+const assertArraysEqual = require('./assertArraysEqual');
 
-  let i;
-  for (i = 0; i < arrA.length; i++) {
-    if (arrA[i] !== arrB[i]) return false;
-  }
-
-  return true;
-};
-
-const assertArraysEqual = function(arrA, arrB) {
-  let a = arrA;
-  let b = arrB;
-  if (eqArrays(a, b) === true) {
-    console.log('😀Assertion Passed: ', a, ' === ', b);
-  } else {
-    console.log('😀Assertion Failed: ', a, '!== ', b);
-  }
-};
-
-//Actual Function
+//Function
 const middle = function(arr) {
   let rtArr = [];
   if (arr.length < 3) return rtArr;
@@ -33,10 +13,5 @@ const middle = function(arr) {
   return rtArr;
 };
 
-// Test Code
-assertArraysEqual(middle([1]), []);
-assertArraysEqual(middle([1, 2]), []);
-assertArraysEqual(middle([1, 2, 3]), [2]);
-assertArraysEqual(middle([1, 2, 3, 4, 5]), [3]);
-assertArraysEqual(middle([1, 2, 3, 4]), [2, 3]);
-assertArraysEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4]);
+//Export Function
+module.exports = middle;
