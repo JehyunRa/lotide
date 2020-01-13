@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@jehyunra/lotide",
   "version": "1.0.0",
   "description": "This project was created and published by me as part of my learnings at Lighthouse Labs. ",
-  "main": "assertArraysEqual.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -22,5 +22,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.0.0"
-  }
+  },
+  "dependencies": {}
 }
