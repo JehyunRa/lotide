@@ -1,12 +1,42 @@
 //Imported Function
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const letterPositions = require('../letterPositions');
 
 //Code Test
-console.log(letterPositions('lighthouse in the house'));
-console.log(letterPositions('hello'));
-console.log("\n...asserting arrays...\n");
-assertArraysEqual(letterPositions("hello").h, [0]);
-assertArraysEqual(letterPositions("hello").e, [1]);
-assertArraysEqual(letterPositions("hello").l, [2, 3]);
-assertArraysEqual(letterPositions("hello").o, [4]);
+describe("#letterPositionTest", () => {
+  it(`returns {
+    l: [ 0 ],
+    i: [ 1, 11 ],
+    g: [ 2 ],
+    h: [ 3, 5, 15, 18 ],
+    t: [ 4, 14 ],
+    o: [ 6, 19 ],
+    u: [ 7, 20 ],
+    s: [ 8, 21 ],
+    e: [ 9, 16, 22 ],
+    n: [ 12 ]
+    } for 'lighthouse in the house'`, () => {
+    assert.deepEqual(letterPositions('lighthouse in the house'), {
+      l: [ 0 ],
+      i: [ 1, 11 ],
+      g: [ 2 ],
+      h: [ 3, 5, 15, 18 ],
+      t: [ 4, 14 ],
+      o: [ 6, 19 ],
+      u: [ 7, 20 ],
+      s: [ 8, 21 ],
+      e: [ 9, 16, 22 ],
+      n: [ 12 ]
+      });
+  });
+  it(`returns {
+    h: [ 0 ], e: [ 1 ], l: [ 2, 3 ], o: [ 4 ]
+    } for 'hello'`, () => {
+    assert.deepEqual(letterPositions('hello'), {
+      h: [ 0 ], e: [ 1 ], l: [ 2, 3 ], o: [ 4 ]
+      });
+  });
+  it(`returns [0] for ("hello").h`, () => {
+    assert.deepEqual(letterPositions("hello").h, [0]);
+  });
+});

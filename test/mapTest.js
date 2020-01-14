@@ -1,10 +1,10 @@
 //Imported Function
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const map = require('../map');
 
-//Global
-const words = ["ground", "control", "to", "major", "tom"];
-
 //Test Code
-const results1 = map(words, word => word[0]);
-assertArraysEqual(results1, ['g', 'c', 't', 'm', 't']);
+describe("#mapTest", () => {
+  it(`returns ['g', 'c', 't', 'm', 't'] for ["ground", "control", "to", "major", "tom"], word => word[0]`, () => {
+    assert.deepEqual(map(["ground", "control", "to", "major", "tom"], x => x[0]), ['g', 'c', 't', 'm', 't']);
+  });
+});

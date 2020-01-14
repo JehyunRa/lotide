@@ -1,5 +1,5 @@
 //Imported Function
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const countOnly = require('../countOnly');
 
 //Global
@@ -15,9 +15,15 @@ const firstNames = [
   "Joe"
 ];
 
-const result1 = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true });
-
 //Code Test
-assertEqual(result1["Jason"], 1);
-assertEqual(result1["Karima"], undefined);
-assertEqual(result1["Fang"], 2);
+describe("#countOnlyTest", () => {
+  it(`returns 1 for firstNames, { "Jason": true, "Karima": true, "Fang": true })["Jason"`, () => {
+    assert.deepEqual(countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true })["Jason"], 1);
+  });
+  it(`returns 1 for firstNames, { "Jason": true, "Karima": true, "Fang": true })["Karima"`, () => {
+    assert.deepEqual(countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true })["Karima"], undefined);
+  });
+  it(`returns 1 for firstNames, { "Jason": true, "Karima": true, "Fang": true })["Fang"`, () => {
+    assert.deepEqual(countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true })["Fang"], 2);
+  });
+});

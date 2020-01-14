@@ -1,8 +1,8 @@
 //Function
 const map = function(array, callback) {
   const results = [];
-  for (let item of array) {
-    results.push(callback(item));
+  for (let i = 0; i < array.length; i++) {
+    results.push(callback(array[i]));
   }
   return results;
 };
